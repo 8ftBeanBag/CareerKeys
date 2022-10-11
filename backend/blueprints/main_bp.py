@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, abort
 from jinja2 import TemplateNotFound
 
 app = Blueprint('main_bp', __name__,
-                        template_folder='templates')
+                        template_folder='../templates')
 
 @app.route('/', defaults={'page': 'index'})
 @app.route('/<page>')
