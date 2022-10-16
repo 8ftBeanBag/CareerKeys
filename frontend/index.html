@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="./main.js"></script>
+
+        <!-- styles -->
+        <link rel="stylesheet" href="./main.css">    
+    </head>
+    <body class="bg-slate-900 text-white">
+        <h1 class="text-3xl font-bold font-serif bg-sky-500 text-white p-6">
+            CareerKeys
+        </h1>
+        <div class="flex justify-center p-6">
+            <div class="flex justify">
+            </div>
+            <ul class="flex justify-center">
+                <li class="mr-3">
+                  <a class="inline-block border border-blue-500 rounded py-2 px-4 bg-sky-500 hover:bg-blue-700 text-white" href="./index.html">HOME</a>
+                </li>
+                <li class="mr-3">
+                  <a class="inline-block border border-white rounded hover:border-gray-200 text-blue-500 hover:bg-gray-200 py-2 px-4" 
+                  href="./about.html">ABOUT</a>
+                </li>
+            </ul>
+        </div>
+        <div class="sm:container mx-auto p-5">
+          <h2 class="text-center text-2xl">I'm an AI web-scraper that finds career keywords related to the term provided.</h2>
+
+          <!-- form -->
+          <div class="flex flex-col md:flex-row justify-center">
+            <div class="grow mr-4">
+              <label for="url">URL</label>
+              <input type="text" id="url" name="url" value="https://example.com" class="rounded p-1 w-full text-black">
+            </div>
+            <div class="grow-0 mr-4">
+              <label for="term" class="">Term</label>
+              <input type="text" id="term" name="term" value="example" class="rounded p-1 w-full text-black">
+            </div>
+            <div class="grow-0 mr-4">
+              <label class=""> &nbsp;</label>
+              <button class="rounded p-1 bg-sky-500 w-full hover:bg-blue-700 text-white" onclick="scrape()">Search</button>
+            </div>
+          </div>
+          <div class="flex justify-right items-center mt-4">
+            <input type="radio" id="bfs" name="algo" value="HTML" class="mr-2">
+            <label for="bfs" class="mr-5"><a href="https://en.wikipedia.org/wiki/Breadth-first_search" class="underline">Breadth First Search</a></label>
+            <input type="radio" id="dfs" name="aglo" value="CSS" class="mr-2">
+            <label for="dfs"><a href="https://en.wikipedia.org/wiki/Depth-first_search" class="underline">Depth First Search</a></label>
+          </div>
+
+          <!--Results-->
+          <div class="results"></div>
+          <div  class="flex mt-5 justify-center">
+            <h1 class="text-center text-3xl mt-5 underline mr-3">Log</h1>
+            <div id="spinner" style="display: none" ><div class="lds-ripple"><div></div><div></div></div></div>
+          </div>
+          <ul id="logParent"></ul>
+          <div class="h-12"></div> 
+        </div>
+    </body> 
+    <footer class="bg-sky-500 p-5 fixed bottom-0 w-full">
+      Something not working? Email me at hello@abigailhendrick.com
+    </footer>
+</html>
