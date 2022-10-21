@@ -12,12 +12,13 @@ def scrape(term):
     try:
         # Generator function
         def generate():
+            yield "tets"
             url = request.args.get('url')
             for x in scraper.get_site(url, term, SearchAlgorithmTypes.BFS):
                 yield str(x)
             
         # Run generator
-        return stream_with_context(generate())
+        return Response(stream_with_context(generate()))
     
     # Catch exception
     except Exception as e:

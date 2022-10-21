@@ -5,7 +5,8 @@ from api_lib.constants import SearchAlgorithmTypes
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import TimeoutException
-
+import time
+from api_lib import keywords
 
 def configure_driver():
     chrome_options = Options()
@@ -50,6 +51,7 @@ def scrape(nav, term, algo, driver):
         nav (BeautifulSoup Object): nav tag
         term (str): term to search
     """
+    time.sleep(1)
     href = nav.get('href')
     driver.get(href)
     # wait for the element to load
@@ -60,29 +62,13 @@ def scrape(nav, term, algo, driver):
         algo.expand_frontier(new_soup.find_all('a'))
         
         # add results
-        result = find_contents_with_term(new_soup.html, term)
+        result = keywords.tfidf(new_soup)
             
         return {"href": href, "results": result, "time": "0s"}
     
     except TimeoutException:
         print("TimeoutException: Element not found")
         return None
-    
-def find_contents_with_term(soup, term):
-    """Turns soup into set of strings that contain the search term
-
-    Args:
-        soup (BeautifulSoup Object): the soup to turn into strings
-        term (str): term to search
-
-    Returns:
-        Array: Array of strings that contain the search term
-    """
-    results = []
-    for descendant in soup.descendants:
-        if isinstance(descendant, bs4.element.Tag):
-            results.append(descendant.findAll(text=True, recursive=False)) 
-    return results
 
 def valid_link(link, domain):
     return ("http://" in link and (domain in link)) or ("https://" in link and (domain in link))

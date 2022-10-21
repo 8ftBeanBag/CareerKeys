@@ -1,0 +1,6 @@
+!function(p,r,e,s,b,d){p.pbq||(s=p.pbq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
+},s.version='1.0',s.queue=[],b=r.createElement(e),b.async=!0,b.src='https://sr.studiostack.com/v3/services',
+d=r.getElementsByTagName(e)[0],d.parentNode.insertBefore(b,d))}(window,document,'script');
+pbq('init', '137435');
+
+pbq('set', 'story');
